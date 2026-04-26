@@ -5,15 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     container: kivy/buildozer
     steps:
-    - uses: actions/checkout@v4
-    - name: Build APK
-      run: |
-        buildozer android debug
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: xavier-apk
-        path: bin/*.apk      with:
-        name: xavier-apk
-        path: bin/*.apk
-    
+      - uses: actions/checkout@v4
+      - name: Build APK
+        run: buildozer android debug
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: xavier-apk
+          path: bin/*.apk
